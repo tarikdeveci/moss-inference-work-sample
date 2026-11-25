@@ -1,0 +1,164 @@
+{
+ "final_result": "{\"ceo_name\":\"Not found\",\"ceo_phone\":\"Not found\"}",
+ "steps": 11,
+ "screenshots": [
+  {
+   "path": "00001-step-2.png",
+   "step": 2,
+   "captured_at": 1795609787.9913335,
+   "url": "https://example.com/"
+  },
+  {
+   "path": "00002-step-5.png",
+   "step": 5,
+   "captured_at": 1795609794.5786254,
+   "url": "https://duckduckgo.com/"
+  },
+  {
+   "path": "00003-step-7.png",
+   "step": 7,
+   "captured_at": 1795609797.2442088,
+   "url": "https://duckduckgo.com/"
+  },
+  {
+   "path": "00004-step-9.png",
+   "step": 9,
+   "captured_at": 1795609798.9097195,
+   "url": "https://duckduckgo.com/"
+  },
+  {
+   "path": "00005-step-11.png",
+   "step": 11,
+   "captured_at": 1795609803.6918418,
+   "url": "https://duckduckgo.com/"
+  },
+  {
+   "path": "00006-step-13.png",
+   "step": 13,
+   "captured_at": 1795609808.5125484,
+   "url": "https://duckduckgo.com/"
+  },
+  {
+   "path": "00007-step-15.png",
+   "step": 15,
+   "captured_at": 1795609813.4920986,
+   "url": "https://duckduckgo.com/"
+  },
+  {
+   "path": "00008-step-17.png",
+   "step": 17,
+   "captured_at": 1795609818.9825656,
+   "url": "https://duckduckgo.com/?ia=web&origin=funnel_home_website&t=h_&q=example.com+domain+operator+CEO+IANA"
+  },
+  {
+   "path": "00009-step-19.png",
+   "step": 19,
+   "captured_at": 1795609822.1813416,
+   "url": "https://duckduckgo.com/?ia=web&origin=funnel_home_website&t=h_&q=example.com+domain+operator+CEO+IANA"
+  },
+  {
+   "path": "00010-step-20.png",
+   "step": 20,
+   "captured_at": 1795609825.6311028,
+   "url": "https://www.iana.org/domains/reserved"
+  }
+ ],
+ "timeline": [
+  {
+   "step": 1,
+   "at": 1795609784.6323183,
+   "kind": "text",
+   "text": "I’ll inspect the starting site first to see whether it identifies an organization, then verify any CEO and direct phone only from attributable sources.",
+   "url": null
+  },
+  {
+   "step": 2,
+   "at": 1795609788.0126312,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://example.com/"
+  },
+  {
+   "step": 4,
+   "at": 1795609789.5992987,
+   "kind": "text",
+   "text": "`example.com` explicitly identifies itself as a documentation-only example domain, not an operating service, and links to IANA guidance. I’m checking the official domain context and targeted search results before concluding whether any organization can be attributed to the site.",
+   "url": null
+  },
+  {
+   "step": 5,
+   "at": 1795609794.5996737,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://duckduckgo.com/"
+  },
+  {
+   "step": 7,
+   "at": 1795609797.2650602,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://duckduckgo.com/"
+  },
+  {
+   "step": 9,
+   "at": 1795609798.9312255,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://duckduckgo.com/"
+  },
+  {
+   "step": 11,
+   "at": 1795609803.7137165,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://duckduckgo.com/"
+  },
+  {
+   "step": 13,
+   "at": 1795609808.534057,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://duckduckgo.com/"
+  },
+  {
+   "step": 15,
+   "at": 1795609813.5131192,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://duckduckgo.com/"
+  },
+  {
+   "step": 17,
+   "at": 1795609819.0043416,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://duckduckgo.com/?ia=web&origin=funnel_home_website&t=h_&q=example.com+domain+operator+CEO+IANA"
+  },
+  {
+   "step": 19,
+   "at": 1795609822.2024868,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://duckduckgo.com/?ia=web&origin=funnel_home_website&t=h_&q=example.com+domain+operator+CEO+IANA"
+  },
+  {
+   "step": 20,
+   "at": 1795609825.6524253,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.iana.org/domains/reserved"
+  },
+  {
+   "step": 21,
+   "at": 1795609830.0510526,
+   "kind": "text",
+   "text": "{\"ceo_name\":\"Not found\",\"ceo_phone\":\"Not found\"}",
+   "url": null
+  }
+ ],
+ "video": {
+  "path": "session-1.mp4",
+  "bytes": 1420543,
+  "started_at": "2026-11-25T12:29:28.382000+00:00"
+ }
+}

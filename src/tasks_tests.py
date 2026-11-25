@@ -305,27 +305,47 @@ def test_evidence():
     The first version of ground_truth() only read page 1 of the Mystery
     category, so mystery_multi_page was graded wrong at run time. The raw
     runs.result rows are left as they were; this appends corrected grades.
+    Runs that already have an evidence.regrade row are skipped, so it can be
+    run again after each batch. Traces go to logs/traces/<label>_<run>.json.
     """
     truth = ground_truth()
     L.log("evidence.ground_truth", **truth)
     trace_dir = L.path.parent / "traces"
     trace_dir.mkdir(exist_ok=True)
     with L.path.open(encoding="utf-8") as f:
-        runs = [r for r in map(json.loads, f) if r["test"] == "runs.result"]
-    for r in runs:
-        t = body_of(http.get(f"/tasks/{r['id']}"))
-        trace = body_of(http.get(f"/tasks/{r['id']}/trace"))
-        (trace_dir / f"{r['label']}.json").write_text(json.dumps(trace, indent=1, ensure_ascii=False), encoding="utf-8")
-        L.log("evidence.regrade", label=r["label"], id=r["id"], status=t.get("status"),
+        rows = list(map(json.loads, f))
+    done = {r["id"] for r in rows if r["test"] == "evidence.regrade"}
+    seen: dict[str, int] = {}
+    for r in (x for x in rows if x["test"] == "runs.result"):
+        n = seen[r["label"]] = seen.get(r["label"], 0) + 1
+        if r["id"] in done:
+            continue
+        # Fetch everything first and fail loudly on a bad status: the regrade
+        # row is what marks a run as done, so it is written last.
+        def get(path):
+            resp = http.get(f"/tasks/{r['id']}{path}")
+            resp.raise_for_status()
+            return resp
+        t = get("").json()
+        trace = get("/trace").json()
+        csv_row = None
+        if r["label"] == "time_cap":
+            # The agent names the CSV itself, so take the first .csv it wrote.
+            paths = [x["path"] for x in get("/files").json().get("data", [])]
+            csvs = [p for p in paths if p.endswith(".csv")]
+            csv_row = {"files": len(paths), "csv": csvs[0] if csvs else None}
+            if csvs:
+                lines = [x for x in get(f"/files/{csvs[0]}").text.strip().splitlines()[1:] if x]
+                counts = [int(m.group(1)) for x in lines if (m := re.search(r",(\d+)(?:,|$)", x))]
+                csv_row |= {"rows": len(lines), "books": sum(counts), "expected": {"rows": 50, "books": 1000}}
+        (trace_dir / f"{r['label']}_{n}.json").write_text(json.dumps(trace, indent=1, ensure_ascii=False), encoding="utf-8")
+        if csv_row is not None:
+            L.log("evidence.time_cap_csv", run=n, id=r["id"], status=t.get("status"),
+                  error=(t.get("error") or {}).get("code"), **csv_row)
+        L.log("evidence.regrade", label=r["label"], run=n, id=r["id"], status=t.get("status"),
               at_run_time=r["grade"], corrected=grade(r["label"], t, truth),
               urls=list(dict.fromkeys(s.get("url") for s in trace.get("screenshots", []))),
               usage=t.get("usage"))
-        if r["label"] == "time_cap":
-            csv_text = http.get(f"/tasks/{r['id']}/files/outputs/category-book-counts.csv").text
-            lines = [x for x in csv_text.strip().splitlines()[1:] if x]
-            counts = [int(m.group(1)) for x in lines if (m := re.search(r",(\d+),http", x))]
-            L.log("evidence.time_cap_csv", rows=len(lines), books=sum(counts),
-                  expected={"rows": 50, "books": 1000})
 
 
 # ---------------------------------------------------------------- SDK

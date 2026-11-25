@@ -1,0 +1,53 @@
+{
+ "final_result": "{\"title\":\"A Light in the Attic\",\"price_gbp\":51.77,\"in_stock_count\":22}",
+ "steps": 3,
+ "screenshots": [
+  {
+   "path": "00001-step-2.png",
+   "step": 2,
+   "captured_at": 1795609695.8183134,
+   "url": "https://books.toscrape.com/"
+  },
+  {
+   "path": "00002-step-4.png",
+   "step": 4,
+   "captured_at": 1795609698.2840266,
+   "url": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+  }
+ ],
+ "timeline": [
+  {
+   "step": 1,
+   "at": 1795609692.9226162,
+   "kind": "text",
+   "text": "I’ll inspect the catalogue in the browser and verify the product details directly from its page.",
+   "url": null
+  },
+  {
+   "step": 2,
+   "at": 1795609695.838837,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://books.toscrape.com/"
+  },
+  {
+   "step": 4,
+   "at": 1795609698.3055942,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+  },
+  {
+   "step": 5,
+   "at": 1795609699.816972,
+   "kind": "text",
+   "text": "{\"title\":\"A Light in the Attic\",\"price_gbp\":51.77,\"in_stock_count\":22}",
+   "url": null
+  }
+ ],
+ "video": {
+  "path": "session-1.mp4",
+  "bytes": 148517,
+  "started_at": "2026-11-25T12:28:00.976000+00:00"
+ }
+}

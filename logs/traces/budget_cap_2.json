@@ -1,0 +1,26 @@
+{
+ "final_result": "",
+ "steps": 1,
+ "screenshots": [],
+ "timeline": [
+  {
+   "step": 1,
+   "at": 1795609688.769112,
+   "kind": "text",
+   "text": "I’ll open Mystery from the homepage, check every category page, then rank all books by price and report the cheapest three with source links.",
+   "url": null
+  },
+  {
+   "step": 2,
+   "at": 1795609688.955124,
+   "kind": "tool",
+   "text": "skill",
+   "url": null
+  }
+ ],
+ "video": {
+  "path": "session-1.mp4",
+  "bytes": 5608,
+  "started_at": "2026-11-25T12:28:02.546000+00:00"
+ }
+}

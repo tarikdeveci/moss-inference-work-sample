@@ -68,11 +68,11 @@ def test_latency(runs: int = 3):
 
 
 # ---------------------------------------------------------------- streaming
-def stream_once(model: str):
-    payload = {"model": model, "input": PROMPT, "stream": True, "max_output_tokens": 80}
+def stream_once(model: str, prompt: str = PROMPT, extra_headers: dict | None = None):
+    payload = {"model": model, "input": prompt, "stream": True, "max_output_tokens": 80}
     t0 = time.perf_counter()
     ttft, events, text, types = None, 0, [], set()
-    with http.stream("POST", "/responses", json=payload, headers=NO_CACHE) as r:
+    with http.stream("POST", "/responses", json=payload, headers={**NO_CACHE, **(extra_headers or {})}) as r:
         status = r.status_code
         for line in r.iter_lines():
             if not line.startswith("data:"):
@@ -342,7 +342,38 @@ def test_headers():
           text=output_text(b) if isinstance(b, dict) else b, usage=b.get("usage") if isinstance(b, dict) else None)
 
 
-SECTIONS = {"models": test_models, "latency": test_latency, "stream": test_stream, "cache": test_cache,
+def test_grounded_ttft(runs: int = 7):
+    """The docs quote first token under 200 ms for grounded fastlane calls,
+    but the earlier stream test sent no index. Measure both, interleaved,
+    plus a network baseline (an authenticated GET /models round trip) so
+    gateway and model time can be told apart from the trip from Turkey."""
+    net = []
+    for _ in range(runs):
+        _, ms = timed(http.get, "/models")
+        net.append(ms)
+    L.log("grounded_ttft.network_baseline", route="GET /models", ms=net, median=statistics.median(net),
+          note="measured from a home connection in Turkey")
+    name = f"acme-{uuid.uuid4().hex[:6]}"
+    make_index(name)
+    try:
+        rows = {"no_index": [], "with_index": []}
+        texts = {}
+        for i in range(runs):
+            q = f"{QUESTIONS[i % 5][0]} (ref {uuid.uuid4().hex[:6]})"
+            for mode, hdr in (("no_index", {}), ("with_index", {"X-Moss-Indexes": name})):
+                status, ttft, total, _, text, _ = stream_once("moss/fastlane-1", q, hdr)
+                rows[mode].append({"status": status, "ttft": round(ttft, 1) if ttft else None,
+                                   "total": round(total, 1)})
+                texts[mode] = text[:160]
+        for mode, rs in rows.items():
+            t = [r["ttft"] for r in rs if r["ttft"]]
+            L.log("grounded_ttft.stream", mode=mode, runs=rs, ttft_median=statistics.median(t) if t else None,
+                  total_median=statistics.median([r["total"] for r in rs]), last_text=texts[mode])
+    finally:
+        L.log("grounded_ttft.delete_index", index=name, result=str(delete_index(name))[:200])
+
+
+SECTIONS = {"grounded_ttft": test_grounded_ttft, "models": test_models, "latency": test_latency, "stream": test_stream, "cache": test_cache,
             "headers": test_headers,
             "grounding": test_grounding, "errors": test_errors, "openai": test_openai,
             "tools": test_tools, "concurrency": test_concurrency}
