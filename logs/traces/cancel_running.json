@@ -1,0 +1,26 @@
+{
+ "final_result": "",
+ "steps": 1,
+ "screenshots": [],
+ "timeline": [
+  {
+   "step": 2,
+   "at": 1795598987.7702754,
+   "kind": "text",
+   "text": "I’ll read the browser-use instructions, then collect category pages and pagination counts from the site itself and save the completed table under `outputs`.",
+   "url": null
+  },
+  {
+   "step": 3,
+   "at": 1795599002.1080754,
+   "kind": "tool",
+   "text": "task",
+   "url": null
+  }
+ ],
+ "video": {
+  "path": "session-1.mp4",
+  "bytes": 15046,
+  "started_at": "2026-11-25T09:29:29.733000+00:00"
+ }
+}

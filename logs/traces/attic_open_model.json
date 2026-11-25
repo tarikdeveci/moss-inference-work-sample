@@ -1,0 +1,171 @@
+{
+ "final_result": "{\"title\": \"A Light in the Attic\", \"price_gbp\": 51.77, \"in_stock_count\": 22}",
+ "steps": 14,
+ "screenshots": [
+  {
+   "path": "00001-step-8.png",
+   "step": 8,
+   "captured_at": 1795598980.2115016,
+   "url": "https://books.toscrape.com/"
+  },
+  {
+   "path": "00002-step-10.png",
+   "step": 10,
+   "captured_at": 1795598981.5254188,
+   "url": "https://books.toscrape.com/"
+  },
+  {
+   "path": "00003-step-12.png",
+   "step": 12,
+   "captured_at": 1795598982.505172,
+   "url": "https://books.toscrape.com/"
+  },
+  {
+   "path": "00004-step-14.png",
+   "step": 14,
+   "captured_at": 1795598983.9109259,
+   "url": "https://books.toscrape.com/"
+  },
+  {
+   "path": "00005-step-16.png",
+   "step": 16,
+   "captured_at": 1795598987.2425368,
+   "url": "https://books.toscrape.com/"
+  },
+  {
+   "path": "00006-step-18.png",
+   "step": 18,
+   "captured_at": 1795598988.8098712,
+   "url": "https://books.toscrape.com/"
+  },
+  {
+   "path": "00007-step-20.png",
+   "step": 20,
+   "captured_at": 1795598990.6159787,
+   "url": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+  },
+  {
+   "path": "00008-step-22.png",
+   "step": 22,
+   "captured_at": 1795598992.0587468,
+   "url": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+  },
+  {
+   "path": "00009-step-24.png",
+   "step": 24,
+   "captured_at": 1795598993.2990098,
+   "url": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+  },
+  {
+   "path": "00010-step-26.png",
+   "step": 26,
+   "captured_at": 1795598995.9447424,
+   "url": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+  }
+ ],
+ "timeline": [
+  {
+   "step": 2,
+   "at": 1795598975.1152904,
+   "kind": "tool",
+   "text": "skill",
+   "url": null
+  },
+  {
+   "step": 4,
+   "at": 1795598977.2482176,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": null
+  },
+  {
+   "step": 6,
+   "at": 1795598978.3122542,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": null
+  },
+  {
+   "step": 8,
+   "at": 1795598980.2328532,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://books.toscrape.com/"
+  },
+  {
+   "step": 10,
+   "at": 1795598981.5466056,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://books.toscrape.com/"
+  },
+  {
+   "step": 12,
+   "at": 1795598982.5270412,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://books.toscrape.com/"
+  },
+  {
+   "step": 14,
+   "at": 1795598983.9325473,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://books.toscrape.com/"
+  },
+  {
+   "step": 16,
+   "at": 1795598987.2641811,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://books.toscrape.com/"
+  },
+  {
+   "step": 18,
+   "at": 1795598988.8316581,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://books.toscrape.com/"
+  },
+  {
+   "step": 20,
+   "at": 1795598990.6379461,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+  },
+  {
+   "step": 22,
+   "at": 1795598992.0801592,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+  },
+  {
+   "step": 24,
+   "at": 1795598993.3203561,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+  },
+  {
+   "step": 26,
+   "at": 1795598995.966624,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+  },
+  {
+   "step": 28,
+   "at": 1795598998.5202708,
+   "kind": "text",
+   "text": "{\"title\": \"A Light in the Attic\", \"price_gbp\": 51.77, \"in_stock_count\": 22}",
+   "url": null
+  }
+ ],
+ "video": {
+  "path": "session-1.mp4",
+  "bytes": 466357,
+  "started_at": "2026-11-25T09:29:28.866000+00:00"
+ }
+}
